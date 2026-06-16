@@ -36,7 +36,7 @@ app.post('/update-profile', function (req, res) {
     var userObj=req.body;
     var response = res;
     
-    console.log("connceting to db....")
+    console.log("Db is connecting....")
     MongoClient.connect('mongodb://admin:password@localhost:27017', function (err, client) {
       if (err) throw err;
 
@@ -55,6 +55,9 @@ app.post('/update-profile', function (req, res) {
       });
     
     });
+
+    //Send Response
+    res.send(userObj);
 }); 
 
 app.get('/profile-picture', function (req, res) {
