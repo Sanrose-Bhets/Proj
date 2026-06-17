@@ -17,7 +17,8 @@ app.get('/', function (req, res) {
 
 app.get('/get-profile', function (req, res) {
   var response = res;
-  MongoClient.connect('mongodb://admin:password@localhost:27017', function (err, client) {
+  //MongoClient.connect('mongodb://admin:password@localhost:27017', function (err, client) {
+  MongoClient.connect(process.env.MONGO_URI, function (err, client) {
     if (err) throw err;
 
     var db= client.db('user-account');
@@ -37,7 +38,8 @@ app.post('/update-profile', function (req, res) {
     var response = res;
     
     console.log("Db is connecting....")
-    MongoClient.connect('mongodb://admin:password@localhost:27017', function (err, client) {
+    //MongoClient.connect('mongodb://admin:password@localhost:27017', function (err, client) {
+    MongoClient.connect(process.env.MONGO_URI, function (err, client) {
       if (err) throw err;
 
       var db= client.db('user-account');
